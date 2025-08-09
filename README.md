@@ -691,10 +691,9 @@ pytest tests/ -v
 
 ## 📞 联系我们
 
-- **项目主页**: https://github.com/your-username/chatbot-system
-- **问题反馈**: https://github.com/your-username/chatbot-system/issues
-- **邮箱**: your-email@example.com
-- **微信群**: 扫码加入技术交流群
+- **项目主页**: https://github.com/Adjustmen/chat-robot
+- **问题反馈**: https://github.com/Adjustmen/chat-robot
+- **邮箱**: wenjunxiong006@gmail.com
 
 ## 🙏 致谢
 
