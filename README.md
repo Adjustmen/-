@@ -705,13 +705,6 @@ pytest tests/ -v
 - [FAISS](https://github.com/facebookresearch/faiss)
 - [Sentence Transformers](https://github.com/UKPLab/sentence-transformers)
 
-## 📊 项目统计
-
-![GitHub stars](https://img.shields.io/github/stars/your-username/chatbot-system)
-![GitHub forks](https://img.shields.io/github/forks/your-username/chatbot-system)
-![GitHub issues](https://img.shields.io/github/issues/your-username/chatbot-system)
-![GitHub contributors](https://img.shields.io/github/contributors/your-username/chatbot-system)
-
 ---
 
 ⭐ 如果这个项目对你有帮助，请给我们一个星标！
