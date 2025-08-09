@@ -48,7 +48,7 @@
 
 ```bash
 # 克隆项目
-git clone https://github.com/your-username/chatbot-system.git
+git clone git@github.com:Adjustmen/chat-robot.git
 cd chatbot-system
 
 # 创建虚拟环境
