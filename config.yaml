@@ -1,0 +1,510 @@
+# AI增强智能对话机器人系统配置文件
+# Enhanced Intelligent Chatbot System Configuration
+
+# 模型配置
+model:
+  # 对话模型路径
+  chat_model: "/root/conversation/local_dialoGPT"
+  # 嵌入模型路径  
+  embedding_model: "/root/conversation/local_model"
+  # 是否使用4bit量化
+  load_in_4bit: false
+  # 设备类型 (auto/cuda/cpu)
+  device: "auto"
+  
+  # 生成参数
+  generation:
+    max_new_tokens: 512
+    temperature: 0.7
+    top_p: 0.9
+    do_sample: true
+    repetition_penalty: 1.1
+    length_penalty: 1.0
+
+# 知识库配置
+knowledge:
+  chunk_size: 500
+  chunk_overlap: 50
+  similarity_threshold: 0.3
+  max_retrieved_docs: 3
+  # 知识库更新间隔（秒）
+  update_interval: 3600
+  # 是否启用动态知识更新
+  dynamic_update: true
+
+# 对话配置
+dialogue:
+  max_history: 10
+  session_timeout: 3600
+  # 上下文窗口大小
+  context_window: 2048
+  # 是否启用多轮对话
+  multi_turn: true
+
+# Web界面配置
+web:
+  title: "智能对话机器人系统 (AI增强版)"
+  host: "0.0.0.0"
+  port: 7860
+  share: false
+  theme: "soft"
+  # 是否启用API接口
+  enable_api: true
+  # 最大并发用户数
+  max_concurrent_users: 100
+
+# 日志配置
+logging:
+  level: "INFO"
+  file: "logs/chatbot.log"
+  # 日志轮转配置
+  rotation:
+    max_size: "100MB"
+    backup_count: 5
+  # 是否记录用户交互
+  log_interactions: true
+  # 敏感信息过滤
+  filter_sensitive: true
+
+# 系统类型配置
+system_types:
+  default:
+    name: "通用助手"
+    description: "通用智能助手，适用于各种问答场景"
+    personality: "友好、专业、乐于助人"
+    
+  customer_service:
+    name: "客服助手"
+    description: "专业客服助手，专注于客户服务"
+    personality: "耐心、细致、解决问题导向"
+    
+  campus_qa:
+    name: "校园问答"
+    description: "校园信息助手，提供校园相关咨询"
+    personality: "亲切、熟悉校园环境、学生友好"
+    
+  intelligent:
+    name: "AI智能助手" 
+    description: "集成所有AI增强功能的智能助手"
+    personality: "智能、学习能力强、个性化服务"
+
+# AI增强功能配置
+intelligence:
+  # 是否启用强化学习
+  use_reinforcement_learning: true
+  # 是否启用用户画像
+  use_user_profiling: true
+  # 是否启用上下文记忆
+  use_contextual_memory: true
+  # 是否启用意图识别
+  use_intent_classification: true
+  
+  # 记忆系统配置
+  memory:
+    # 最大记忆条目数
+    max_items: 1000
+    # 记忆相似度阈值
+    similarity_threshold: 0.7
+    # 记忆过期时间（天）
+    expiry_days: 30
+    # 是否启用跨会话记忆
+    cross_session: true
+  
+  # 用户画像配置
+  user_profiling:
+    # 画像更新阈值
+    update_threshold: 5
+    # 是否启用兴趣推理
+    interest_inference: true
+    # 交互风格学习
+    style_learning: true
+  
+  # 强化学习配置
+  reinforcement_learning:
+    # 学习率
+    learning_rate: 0.001
+    # 探索率
+    epsilon_start: 1.0
+    epsilon_end: 0.01
+    epsilon_decay: 0.995
+    # 折扣因子
+    gamma: 0.99
+    # 经验回放缓冲区大小
+    replay_buffer_size: 10000
+    # 目标网络更新频率
+    target_update_freq: 100
+
+# 训练配置
+training:
+  # 是否启用训练模式
+  enabled: true
+  # 训练间隔（秒）
+  interval: 300
+  # 模型保存间隔（秒）  
+  save_interval: 3600
+  # 模型保存目录
+  save_dir: "models/trained"
+  # 批次大小
+  batch_size: 32
+  # 验证集比例
+  validation_split: 0.2
+  
+  # 自动训练配置
+  auto_training:
+    # 启用自动训练
+    enabled: true
+    # 最小反馈数量触发训练
+    min_feedback_count: 10
+    # 训练数据最大年龄（天）
+    max_data_age: 7
+    # 是否启用在线学习
+    online_learning: true
+
+# 数据库配置
+database:
+  # 数据库类型 (sqlite/mysql/postgresql)
+  type: "sqlite"
+  # SQLite配置
+  sqlite:
+    path: "data/chatbot.db"
+    # 是否启用WAL模式
+    wal_mode: true
+  
+  # MySQL配置（可选）
+  mysql:
+    host: "localhost"
+    port: 3306
+    database: "chatbot_db"
+    username: "chatbot_user"
+    password: "your_password"
+    charset: "utf8mb4"
+  
+  # PostgreSQL配置（可选）
+  postgresql:
+    host: "localhost"
+    port: 5432
+    database: "chatbot_db"
+    username: "chatbot_user"
+    password: "your_password"
+
+# 安全配置
+security:
+  # API访问令牌
+  api_token: "your_secure_api_token"
+  # 是否启用用户认证
+  enable_auth: false
+  # 会话密钥
+  session_secret: "your_session_secret"
+  # 请求频率限制
+  rate_limiting:
+    enabled: true
+    requests_per_minute: 60
+    requests_per_hour: 1000
+  
+  # 数据加密
+  encryption:
+    # 是否加密用户数据
+    encrypt_user_data: true
+    # 加密密钥
+    encryption_key: "your_encryption_key"
+
+# 性能配置
+performance:
+  # 缓存配置
+  cache:
+    # 是否启用缓存
+    enabled: true
+    # 缓存类型 (memory/redis)
+    type: "memory"
+    # 缓存过期时间（秒）
+    ttl: 3600
+    # 最大缓存大小
+    max_size: "100MB"
+  
+  # 并发配置
+  concurrency:
+    # 最大工作线程数
+    max_workers: 4
+    # 队列最大大小
+    queue_size: 1000
+    # 请求超时时间（秒）
+    timeout: 30
+  
+  # GPU配置
+  gpu:
+    # 是否启用GPU加速
+    enabled: true
+    # GPU内存限制（MB）
+    memory_limit: 8192
+    # 是否启用混合精度
+    mixed_precision: true
+
+# 监控配置
+monitoring:
+  # 是否启用监控
+  enabled: true
+  
+  # 指标收集
+  metrics:
+    # 收集间隔（秒）
+    collection_interval: 60
+    # 指标保留时间（天）
+    retention_days: 30
+    # 监控指标类型
+    types:
+      - "response_time"
+      - "user_satisfaction"
+      - "model_accuracy"
+      - "resource_usage"
+      - "error_rate"
+  
+  # 告警配置
+  alerts:
+    # 是否启用告警
+    enabled: true
+    # 响应时间告警阈值（毫秒）
+    response_time_threshold: 5000
+    # 错误率告警阈值（百分比）
+    error_rate_threshold: 5.0
+    # 满意度告警阈值
+    satisfaction_threshold: 3.0
+    
+    # 告警通知方式
+    notifications:
+      # 邮件通知
+      email:
+        enabled: false
+        smtp_server: "smtp.gmail.com"
+        smtp_port: 587
+        username: "your_email@gmail.com"
+        password: "your_app_password"
+        recipients: ["admin@company.com"]
+      
+      # Webhook通知
+      webhook:
+        enabled: false
+        url: "https://your-webhook-url.com/alerts"
+        headers:
+          Authorization: "Bearer your_token"
+
+# 实验配置
+experiments:
+  # A/B测试配置
+  ab_testing:
+    # 是否启用A/B测试
+    enabled: false
+    # 测试配置
+    tests:
+      response_style:
+        # 测试名称
+        name: "Response Style Test"
+        # 流量分配比例
+        traffic_split:
+          formal: 0.5
+          casual: 0.5
+        # 测试持续时间（天）
+        duration: 7
+        # 成功指标
+        success_metrics: ["user_satisfaction", "engagement_rate"]
+  
+  # 特性开关
+  feature_flags:
+    # 新功能逐步发布
+    gradual_rollout:
+      enhanced_memory: 0.1  # 10%用户
+      advanced_reasoning: 0.05  # 5%用户
+      multimodal_support: 0.0  # 暂未发布
+    
+    # 用户群体特定功能
+    user_groups:
+      beta_testers:
+        - "enhanced_memory"
+        - "advanced_reasoning"
+      premium_users:
+        - "priority_support"
+        - "extended_history"
+
+# 多语言支持
+localization:
+  # 默认语言
+  default_language: "zh-CN"
+  # 支持的语言列表
+  supported_languages:
+    - "zh-CN"  # 简体中文
+    - "zh-TW"  # 繁体中文
+    - "en-US"  # 英语
+    - "ja-JP"  # 日语
+    - "ko-KR"  # 韩语
+  
+  # 语言检测
+  auto_detection:
+    enabled: true
+    confidence_threshold: 0.8
+  
+  # 翻译配置
+  translation:
+    # 翻译服务提供商
+    provider: "local"  # local/google/baidu/tencent
+    # API配置
+    api:
+      google:
+        api_key: "your_google_translate_api_key"
+      baidu:
+        app_id: "your_baidu_app_id"
+        secret_key: "your_baidu_secret_key"
+
+# 插件系统
+plugins:
+  # 是否启用插件系统
+  enabled: true
+  # 插件目录
+  directory: "plugins"
+  
+  # 内置插件
+  builtin:
+    # 天气查询插件
+    weather:
+      enabled: true
+      api_key: "your_weather_api_key"
+      default_city: "北京"
+    
+    # 新闻查询插件
+    news:
+      enabled: true
+      api_key: "your_news_api_key"
+      default_category: "technology"
+    
+    # 计算器插件
+    calculator:
+      enabled: true
+      precision: 10
+    
+    # 搜索插件
+    search:
+      enabled: true
+      search_engine: "bing"  # bing/google
+      api_key: "your_search_api_key"
+      max_results: 5
+  
+  # 第三方插件
+  third_party:
+    # 插件安装源
+    sources:
+      - "https://plugins.chatbot.com/registry"
+    # 自动更新
+    auto_update: false
+    # 安全检查
+    security_check: true
+
+# 备份和恢复
+backup:
+  # 自动备份
+  automatic:
+    enabled: true
+    # 备份间隔（小时）
+    interval: 24
+    # 备份保留数量
+    retention_count: 7
+    # 备份存储位置
+    storage_path: "backups"
+  
+  # 备份内容
+  include:
+    - "user_profiles"
+    - "conversation_history"
+    - "knowledge_base"
+    - "trained_models"
+    - "system_config"
+  
+  # 云存储备份（可选）
+  cloud_storage:
+    enabled: false
+    provider: "aws_s3"  # aws_s3/azure_blob/google_cloud
+    aws_s3:
+      bucket_name: "chatbot-backups"
+      region: "us-east-1"
+      access_key: "your_access_key"
+      secret_key: "your_secret_key"
+
+# 集成配置
+integrations:
+  # 消息平台集成
+  messaging:
+    # 微信集成
+    wechat:
+      enabled: false
+      app_id: "your_wechat_app_id"
+      app_secret: "your_wechat_app_secret"
+    
+    # 钉钉集成
+    dingtalk:
+      enabled: false
+      app_key: "your_dingtalk_app_key"
+      app_secret: "your_dingtalk_app_secret"
+    
+    # Slack集成
+    slack:
+      enabled: false
+      bot_token: "your_slack_bot_token"
+      app_token: "your_slack_app_token"
+  
+  # CRM集成
+  crm:
+    # Salesforce集成
+    salesforce:
+      enabled: false
+      client_id: "your_salesforce_client_id"
+      client_secret: "your_salesforce_client_secret"
+      username: "your_salesforce_username"
+      password: "your_salesforce_password"
+      security_token: "your_security_token"
+  
+  # 分析平台集成
+  analytics:
+    # Google Analytics
+    google_analytics:
+      enabled: false
+      tracking_id: "your_ga_tracking_id"
+    
+    # 百度统计
+    baidu_analytics:
+      enabled: false
+      site_id: "your_baidu_site_id"
+
+# 开发配置
+development:
+  # 调试模式
+  debug: false
+  # 详细日志
+  verbose_logging: false
+  # 性能分析
+  profiling:
+    enabled: false
+    output_dir: "profiling"
+  
+  # 测试配置
+  testing:
+    # 测试数据库
+    test_database: "data/test_chatbot.db"
+    # 模拟用户数量
+    mock_users: 10
+    # 测试场景
+    scenarios:
+      - "basic_qa"
+      - "multi_turn_conversation"
+      - "error_handling"
+      - "performance_stress"
+
+# 版本信息
+version:
+  # 系统版本
+  system: "2.0.0"
+  # 配置文件版本
+  config: "1.0"
+  # 最后更新时间
+  last_updated: "2024-08-09"
+  # 更新日志
+  changelog:
+    "2.0.0": "添加AI增强功能：强化学习、用户画像、智能记忆"
+    "1.5.0": "集成知识库和多模态支持"
+    "1.0.0": "基础对话功能实现"
